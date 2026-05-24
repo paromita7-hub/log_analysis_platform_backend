@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package logpulse.iam.v1;
+
+service AuthService {
+  rpc ValidateAccessToken(ValidateAccessTokenRequest) returns (ValidateAccessTokenResponse);
+  rpc ValidateApiKey(ValidateApiKeyRequest) returns (ValidateApiKeyResponse);
+  rpc GetPrincipal(GetPrincipalRequest) returns (GetPrincipalResponse);
+}
+
+message ValidateAccessTokenRequest {
+  string access_token = 1;
+}
+
+message ValidateAccessTokenResponse {
+  bool valid = 1;
+  string user_id = 2;
+  string organization_id = 3;
+  string role = 4;
+  repeated string permissions = 5;
+  string session_id = 6;
+  int64 expires_at_unix = 7;
+}
+
+message ValidateApiKeyRequest {
+  string api_key = 1;
+}
+
+message ValidateApiKeyResponse {
+  bool valid = 1;
+  string api_key_id = 2;
+  string organization_id = 3;
+  string principal_id = 4;
+}
+
+message GetPrincipalRequest {
+  string user_id = 1;
+  string organization_id = 2;
+}
+
+message GetPrincipalResponse {
+  string user_id = 1;
+  string organization_id = 2;
+  string name = 3;
+  string email = 4;
+  string role = 5;
+}

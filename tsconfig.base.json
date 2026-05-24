@@ -2,20 +2,35 @@
   "compilerOptions": {
     "composite": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "lib": ["es2022"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@org/source"]
+    "baseUrl": ".",
+    "paths": {
+      "@logpulse/shared-contracts": ["libs/shared/contracts/src/index.ts"],
+      "@logpulse/shared-events": ["libs/shared/events/src/index.ts"],
+      "@logpulse/shared-errors": ["libs/shared/errors/src/index.ts"],
+      "@logpulse/shared-auth": ["libs/shared/auth/src/index.ts"],
+      "@logpulse/shared-pagination": ["libs/shared/pagination/src/index.ts"],
+      "@logpulse/shared-testing": ["libs/shared/testing/src/index.ts"],
+      "@logpulse/infrastructure-kafka": ["libs/infrastructure/kafka/src/index.ts"],
+      "@logpulse/infrastructure-redis": ["libs/infrastructure/redis/src/index.ts"],
+      "@logpulse/infrastructure-mongodb": ["libs/infrastructure/mongodb/src/index.ts"],
+      "@logpulse/infrastructure-postgres": ["libs/infrastructure/postgres/src/index.ts"]
+    }
   }
 }

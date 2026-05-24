@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package logpulse.registry.v1;
+
+service ServiceRegistryService {
+  rpc ListServices(ListServicesRequest) returns (ListServicesResponse);
+  rpc GetServiceByIdentifier(GetServiceByIdentifierRequest) returns (GetServiceByIdentifierResponse);
+}
+
+message ListServicesRequest {
+  string organization_id = 1;
+  string environment = 2;
+  string status = 3;
+}
+
+message ServiceListItem {
+  string id = 1;
+  string organization_id = 2;
+  string slug = 3;
+  string name = 4;
+  string status = 5;
+  double error_rate = 6;
+  int64 log_volume = 7;
+  double avg_latency_ms = 8;
+  string last_seen = 9;
+  string host = 10;
+  string environment = 11;
+}
+
+message ListServicesResponse {
+  repeated ServiceListItem items = 1;
+}
+
+message GetServiceByIdentifierRequest {
+  string organization_id = 1;
+  string identifier = 2;
+}
+
+message ServiceMetadata {
+  string region = 1;
+  string cluster = 2;
+  string runtime = 3;
+  string deployment = 4;
+}
+
+message GetServiceByIdentifierResponse {
+  string id = 1;
+  string organization_id = 2;
+  string slug = 3;
+  string name = 4;
+  string status = 5;
+  double error_rate = 6;
+  int64 log_volume = 7;
+  double avg_latency_ms = 8;
+  string last_seen = 9;
+  string host = 10;
+  string version = 11;
+  string uptime = 12;
+  string environment = 13;
+  ServiceMetadata metadata = 14;
+}

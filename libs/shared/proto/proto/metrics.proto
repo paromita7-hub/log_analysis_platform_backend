@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package logpulse.metrics.v1;
+
+service MetricsService {
+  rpc GetSummary(GetSummaryRequest) returns (GetSummaryResponse);
+  rpc GetServiceSeries(GetServiceSeriesRequest) returns (GetServiceSeriesResponse);
+  rpc GetCurrentServiceErrorRate(GetCurrentServiceErrorRateRequest) returns (GetCurrentServiceErrorRateResponse);
+}
+
+message GetSummaryRequest {
+  string organization_id = 1;
+  string time_range = 2;
+}
+
+message MetricCard {
+  string id = 1;
+  string label = 2;
+  double value = 3;
+  string display_value = 4;
+  double delta = 5;
+  string trend = 6;
+  string unit = 7;
+  string icon = 8;
+}
+
+message GetSummaryResponse {
+  repeated MetricCard summary = 1;
+}
+
+message GetServiceSeriesRequest {
+  string organization_id = 1;
+  string service_id = 2;
+  string metric = 3;
+  string time_range = 4;
+}
+
+message SeriesPoint {
+  string timestamp = 1;
+  double value = 2;
+}
+
+message GetServiceSeriesResponse {
+  repeated SeriesPoint series = 1;
+}
+
+message GetCurrentServiceErrorRateRequest {
+  string organization_id = 1;
+  string service_id = 2;
+  string window = 3;
+}
+
+message GetCurrentServiceErrorRateResponse {
+  double error_rate = 1;
+  int64 total_logs = 2;
+  int64 error_logs = 3;
+}
