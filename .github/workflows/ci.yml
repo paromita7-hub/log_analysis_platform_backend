@@ -24,8 +24,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - run: corepack enable
-      - run: corepack prepare pnpm@10.11.0 --activate
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
 
       # This enables task distribution via Nx Cloud
       # Run this command as early as possible, before dependencies are installed
