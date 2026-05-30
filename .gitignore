@@ -34,6 +34,40 @@ yarn-error.log
 testem.log
 /typings
 
+# logs and reports
+logs/
+*.log
+*.log.*
+*.pid
+*.pid.lock
+*.seed
+*.lcov
+.nyc_output
+
+# env files
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# caches and build artifacts
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.turbo/
+.swc/
+*.tsbuildinfo
+.pnpm-store/
+**/.pnpm-store/
+pnpm-debug.log
+pnpm-debug.log.*
+
+# lockfiles from other package managers
+package-lock.json
+yarn.lock
+
 # System Files
 .DS_Store
 Thumbs.db
